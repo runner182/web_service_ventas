@@ -1,0 +1,23 @@
+SqLite
+
+create table usuarios(id_usuario integer not null primary key autoincrement,nombre text not null, direccion text not null,telefono text not null,email text not null);
+
+create table productos(id_producto integer not null primary key autoincrement,nombre text not null,descripcion text not null,imagen text null,precio real not null,cantidad int not null);
+
+create table vendedor(id_vendedor integer not null autoincrement primary key,id_usuario integer not null,password text not null);
+
+create table pagos(id_pago integer not null autoincrement primary key,id_venta integer not null,fecha datetime default current_timestamp,pago real not null);
+
+create table ventas(id_venta integer not null autoincrement primary key,id_usuario integer not null,id_vendedor integer not null,id_producto integer not null,fecha datetime default current_timestamp,num_productos integer not null,precio_producto real not null,tipo_pago integer not null,tipo_cobro integer not null,horario_cobro text not null,cantidad_abono real not null);
+----------------------------
+Mysql
+
+create table usuarios(id_usuario int not null primary key auto_increment,nombre varchar(100) not null, direccion varchar(100) not null,telefono varchar(10) not null,email varchar(100) not null);
+
+create table productos(id_producto int not null primary key auto_increment,nombre varchar(100) not null,descripcion text not null,imagen text null,precio decimal(10,2) not null,cantidad int not null);
+
+create table vendedor(id_vendedor int not null auto_increment primary key,id_usuario int not null,password text not null);
+
+create table pagos(id_pago int not null auto_increment primary key,id_venta int not null,fecha datetime not null,pago decimal(10,2) not null);
+
+create table ventas(id_venta int not null auto_increment primary key,id_usuario int not null,id_vendedor int not null,id_producto int not null,fecha datetime not null,num_productos int not null,precio_producto decimal(10,2) not null,tipo_pago int not null,tipo_cobro int not null,horario_cobro varchar(100) not null,cantidad_abono decimal(10,2) not null);
