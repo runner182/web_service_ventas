@@ -1,13 +1,13 @@
 <?php
-require "/DB/database.php"
+require "DB/database.php";
 
 class Ventas{
 	function __construct()
     {
     }
 
-    public static function getLogin($email,$pass){
-    	$consulta="SELECT * FROM usuarios u INNER JOIN vendedor v on(u.id_usuario=v.id_usuario) where u.email= ? AND v.password= ?");
+    public static function getLogin($email,$password){
+    	$consulta="SELECT u.id_usuario,u.nombre FROM usuarios u INNER JOIN vendedor v on(u.id_usuario=v.id_usuario) where u.email= ? AND v.password= ?";
 			try {
 				$comando = Database::getInstance()->getDb()->prepare($consulta);
 				$comando->execute(array($email,$password));
@@ -136,7 +136,7 @@ class Ventas{
     }
 
     public static function getVenta($id_venta){
-        
+
     }
     public static function setVenta($id_usuario,$id_vendedor,$id_producto,$fecha,$num_productos,$precio_producto,$tipo_pago,$tipo_cobro,$horario_cobro,$cantidad_abono){
         $query="INSERT into ventas(id_usuario,id_vendedor,id_producto,fecha,num_productos,precio_producto,tipo_pago,tipo_cobro,horario_cobro,cantidad_abono) values(?,?,?,?,?,?,?,?,?,?)";
