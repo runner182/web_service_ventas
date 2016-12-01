@@ -43,7 +43,7 @@ class Ventas{
     }
 
     public static function getAllClientes(){
-    	$query="SELECT * from usuarios ORDER BY nombre desc";
+    	$query="SELECT * from usuarios ORDER BY nombre";
     	try {
     		$comando=Database::getInstance()->getDb()->prepare($query);
     		$comando->execute();
@@ -56,7 +56,7 @@ class Ventas{
     }
 
     public static function getAllProductos(){
-        $query="SELECT * from productos order by nombre desc";
+        $query="SELECT * from productos order by nombre";
         try {
             $sentencia=Database::getInstance()->getDb()->prepare($query);
             $sentencia->execute();
